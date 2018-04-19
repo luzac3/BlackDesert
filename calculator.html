@@ -1,0 +1,146 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=shift_jis">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta http-equiv="content-style-type" content="text/css">
+<script type="text/javascript" src="List_set.js"></script>
+<script type="text/javascript" src="Kyoka_Form.js"></script>
+<script type="text/javascript" src="Momi_Form.js"></script>
+<script type="text/javascript" src="Suzu_Form.js"></script>
+<script type="text/javascript" src="Sekitan_Form.js"></script>
+<script type="text/javascript" src="Konpou_Form.js"></script>
+
+<link rel="stylesheet" href="css.css" type="text/css" media="screen">
+</head>
+
+
+
+<!--<script type="text/javascript" src="pulldowncomp2 firsttest.js"></script>-->
+
+
+
+<div id="Form_Alpha">
+<p>許可証</p>
+<form id= "Kyoka_form">
+</form>
+<input type="button" value="許可証計算開始" onclick="Kyoka_culculate()">
+</div>
+<div id="Alpha"></div>
+
+<div id="Form_Beta">
+<p>モミの木</p>
+<form id= "Momi_form">
+</form>
+<input type="button" value="モミ計算開始" onclick="Momi_culculate()">
+</div>
+<div id="Beta"></div>
+
+<div id="Form_Gamma">
+<p>錫</p>
+<form id= "Suzu_form">
+</form>
+<input type="button" value="錫計算開始" onclick="Suzu_culculate()">
+</div>
+<div id="Gamma"></div>
+
+<div id="Form_Delta">
+<p>石炭</p>
+<form id= "Sekitan_form">
+</form>
+<input type="button" value="石炭計算開始" onclick="Sekitan_culculate()">
+</div>
+<div id="Delta"></div>
+
+<div id="Form_Epsilon">
+<p>梱包材</p>
+<form id= "Konpou_form">
+</form>
+<input type="button" value="梱包材計算開始" onclick="Konpou_culculate()">
+</div>
+<div id="Epsilon"></div>
+
+
+
+<div id="All">
+<input type="button" value="総計算開始" onclick="all_culculate()">
+<p id="Answer">
+</p>
+</div>
+
+
+
+<script type="text/javascript">
+window.onload=set;
+function set(){
+	createform_Kyoka()
+	createform_Momi()
+	createform_Suzu()
+	createform_Sekitan()
+	createform_Konpou()
+}
+
+function all_culculate(){
+	Kyoka_culculate()
+	Momi_culculate()
+	Suzu_culculate()
+	Sekitan_culculate()
+	Konpou_culculate()
+
+var Final_time;
+var all_array=[Kyoka_Final_time,Momi_Final_time,Suzu_Final_time,Sekitan_Final_time,Konpou_Final_time]
+for (var i=0,l=all_array.length; i<l; i++){
+	var n2=all_array[i]
+	if(n2 !=0 && n2 !=null && !isNaN(n2)){
+		if (Final_time){
+			Final_time=Math.max(Final_time,n2);
+		}else{
+			Final_time=n2;
+		}
+	}
+}	
+
+var Fhour = Math.floor(Final_time/3600);
+var Fsecond = Math.floor((Final_time-Fhour*3600)/60);
+var Fminute = Math.floor((Final_time-Fhour*3600)%60);
+
+if(Final_time==Kyoka_Final_time){
+	if(Kyoka_Fhour<=0){
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『許可証』で、かかる時間は"+Kyoka_Fsecond+"分"+Kyoka_Fminute+"秒で、一番多い回数は"+Kyoka_Final_count+"、最終作業者は"+Last_Kyoka_number+"番の"+Final_Kyoka_Toukyu+Final_Kyoka_Kind+"労働者です");
+		}else {
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『許可証』で、かかる時間は"+Kyoka_Fhour+"時間"+Kyoka_Fsecond+"分"+Kyoka_Fminute+"秒で、一番多い回数は"+Kyoka_Final_count+"、最終作業者は"+Last_Kyoka_number+"番の"+Final_Kyoka_Toukyu+Final_Kyoka_Kind+"労働者です");
+		}
+}else if(Final_time==Momi_Final_time){
+	if(Momi_Fhour<=0){
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『モミ』で、かかる時間は"+Momi_Fsecond+"分"+Momi_Fminute+"秒で、一番多い回数は"+Momi_Final_count+"、最終作業者は"+Last_Momi_number+"番の"+Final_Momi_Toukyu+Final_Momi_Kind+"労働者です");
+		}else {
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『モミ』で、かかる時間は"+Momi_Fhour+"時間"+Momi_Fsecond+"分"+Momi_Fminute+"秒で、一番多い回数は"+Momi_Final_count+"、最終作業者は"+Last_Momi_number+"番の"+Final_Momi_Toukyu+Final_Momi_Kind+"労働者です");
+		}
+	
+}else if(Final_time==Suzu_Final_time){
+		if(Suzu_Fhour<=0){
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『錫』で、かかる時間は"+Suzu_Fsecond+"分"+Suzu_Fminute+"秒で、一番多い回数は"+Suzu_Final_count+"、最終作業者は"+Last_Suzu_number+"番の"+Final_Suzu_Toukyu+Final_Suzu_Kind+"労働者です");
+		}else {
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『錫』で、かかる時間は"+Suzu_Fhour+"時間"+Suzu_Fsecond+"分"+Suzu_Fminute+"秒で、一番多い回数は"+Suzu_Final_count+"、最終作業者は"+Last_Suzu_number+"番の"+Final_Suzu_Toukyu+Final_Suzu_Kind+"労働者です");
+		}
+		
+}else if(Final_time==Sekitan_Final_time){
+		if(Sekitan_Fhour<=0){
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『石炭』で、かかる時間は"+Sekitan_Fsecond+"分"+Sekitan_Fminute+"秒で、一番多い回数は"+Sekitan_Final_count+"、最終作業者は"+Last_Sekitan_number+"番の"+Final_Sekitan_Toukyu+Final_Sekitan_Kind+"労働者です");
+		}else {
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『石炭』で、かかる時間は"+Sekitan_Fhour+"時間"+Sekitan_Fsecond+"分"+Sekitan_Fminute+"秒で、一番多い回数は"+Sekitan_Final_count+"、最終作業者は"+Last_Sekitan_number+"番の"+Final_Sekitan_Toukyu+Final_Sekitan_Kind+"労働者です");
+		}
+}else if(Final_time==Konpou_Final_time){
+		if(Konpou_Fhour<=0){
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『梱包材』で、かかる時間は"+Konpou_Fsecond+"分"+Konpou_Fminute+"秒で、一番多い回数は"+Konpou_Final_count+"、最終作業者は"+Last_Konpou_number+"番の"+Final_Konpou_Toukyu+Final_Konpou_Kind+"労働者です");
+		}else {
+		document.getElementById("Answer").innerHTML=("最後に終わる作業は『梱包材』で、かかる時間は"+Konpou_Fhour+"時間"+Konpou_Fsecond+"分"+Konpou_Fminute+"秒で、一番多い回数は"+Konpou_Final_count+"、最終作業者は"+Last_Konpou_number+"番の"+Final_Konpou_Toukyu+Final_Konpou_Kind+"労働者です");
+		}
+}
+
+}
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+li {list-style:none;}
+
+#Alpha{float:right; width: 50%; height: 180px;background-color:#eceadc;
+	text-align:center;padding: 0;
+	border:none;
+	}
+#Form_Alpha{float:left; width: 50%; height: 180px;background-color:#e6e6fa;
+	text-align:center;padding: 0;
+	border:none;
+	}
+
+
+
+#Beta{float:right; width: 50%; height: 580px;background-color:#eceadc;
+	text-align:center;padding: 0;
+	border:none;
+	}
+#Form_Beta{float:left; width: 50%; height: 580px;background-color:#e6e6fa;
+	text-align:center;padding: 0;
+	margin: 0 auto;
+	border:none;
+	}
+
+#Gamma{float:right; width: 50%; height: 580px;background-color:#eceadc;
+	text-align:center;padding: 0;
+	border:none;
+	}
+#Form_Gamma{float:left; width: 50%; height: 580px;background-color:#e6e6fa;
+	text-align:center;padding: 0;
+	margin: 0 auto;
+	border:none;
+	}
+
+
+#Delta{float:right; width: 50%; height: 580px;background-color:#eceadc;
+	text-align:center;padding: 0;
+	border:none;
+	}
+#Form_Delta{float:left; width: 50%; height: 580px;background-color:#e6e6fa;
+	text-align:center;padding: 0;
+	margin: 0 auto;
+	border:none;
+	}
+
+#Epsilon{float:right; width: 50%; height: 1200px;background-color:#eceadc;
+	text-align:center;padding: 0;
+	
+	border:none;
+	}
+#Form_Epsilon{float:left; width: 50%; height: 1200px;background-color:#e6e6fa;
+	text-align:center;padding: 0;
+	border:none;
+	}
+	
+#All{clear:both; width:100%; height: 200px;background-color:#ffe4e1;
+	text-align:center;padding: 0;
+	border:none;
+}
+	
